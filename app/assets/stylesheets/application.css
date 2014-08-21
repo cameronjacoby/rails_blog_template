@@ -47,8 +47,8 @@ a:hover {
 }
 
 img {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100%;
 }
 
@@ -73,6 +73,11 @@ form {
 
 #save-btn {
   margin-top: 20px;
+  background-color: #FABE1F;
+}
+
+#save-btn:hover {
+  background-color: #E6E6E6;
 }
 
 #all-tags {

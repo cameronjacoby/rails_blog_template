@@ -16,7 +16,7 @@
         <img src="<%= post[:image] %>">
         <div id="content"><%= post[:content] %></div>
         <div id="author-tags">
-          <p>Post by: <%= post[:author] %></p>
+          <p>Post by: <a href="#"><%= post[:author] %></a></p>
           <p>
             Tags:
             <% post.tags.each do |tag| %>
