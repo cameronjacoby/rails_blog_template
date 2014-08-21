@@ -1,5 +1,8 @@
-<h2>Posts by Tag: <%= @tag.name %></h2>
-<a href="/">Home</a>
+<h1>Posts by Tag: <%= @tag.name %></h1>
+<p>
+  <a href="/">Home</a>
+  <a href="/posts/new">New Post</a>
+</p>
 
 <% @tag.posts.each do |post| %>
   <img src="<%= post[:image] %>">
