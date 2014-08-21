@@ -1,0 +1,16 @@
+<h2>Posts by Tag: <%= @tag.name %></h2>
+<a href="/">Home</a>
+
+<% @tag.posts.each do |post| %>
+  <img src="<%= post[:image] %>">
+  <h2>Title: <a href="/posts/<%= post[:id] %>"><%= post[:title] %></a></h2>
+  <p>Author: <%= post[:author] %></p>
+  <p>Tagline: <%= post[:tagline] %></p>
+  <p>Content: <%= post[:content] %></p>
+  <p>
+    Tags:
+    <% post.tags.each do |tag| %>
+      <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+    <% end %>
+  </p>
+<% end %>
