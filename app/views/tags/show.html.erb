@@ -1,15 +1,30 @@
-<h1>Posts by Tag: <%= @tag.name %></h1>
+<div class="row">
 
-<% @tag.posts.each do |post| %>
-  <img src="<%= post[:image] %>">
-  <h2>Title: <a href="/posts/<%= post[:id] %>"><%= post[:title] %></a></h2>
-  <p>Author: <%= post[:author] %></p>
-  <p>Tagline: <%= post[:tagline] %></p>
-  <p>Content: <%= post[:content] %></p>
-  <p>
-    Tags:
-    <% post.tags.each do |tag| %>
-      <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+  <div class="col-sm-3">
+    <!-- <div id="all-tags">
+    </div> -->
+  </div>
+
+  <div class="col-sm-6">
+    <% @tag.posts.each do |post| %>
+      <div id="post">
+        <h3><a href="/posts/<%= post[:id] %>"><%= post[:title] %></a></h3>
+        <div id="tagline"><em><%= post[:tagline] %></em></div>
+        <img src="<%= post[:image] %>">
+        <div id="content"><%= post[:content] %></div>
+        <div id="author-tags">
+          <p>Post by: <%= post[:author] %></p>
+          <p>
+            Tags:
+            <% post.tags.each do |tag| %>
+              <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+            <% end %>
+          </p>
+        </div>
+      </div>
     <% end %>
-  </p>
-<% end %>
+  </div>
+
+  <div class="col-sm-3"></div>
+
+</div>

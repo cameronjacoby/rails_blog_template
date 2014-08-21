@@ -17,16 +17,23 @@
 </head>
 <body>
 
-  <div class="row">
-    <div class="col-md-12">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <a href="/posts/new">New Post</a>
-      </ul>
+  <div class="row" id="header">
+    <div class="col-sm-12">
+      <div id="logo"></div>
+      <div id="nav">
+        <div><a href="/">HOME</a></div>
+        <div><a href="/posts/new">NEW</a></div>
+        <div><a href="#">ABOUT</a></div>
+        <div><a href="#">CONTACT</a></div>
+      </div>
     </div>
   </div>
 
   <%= yield %>
+
+  <div class="row" id="footer">
+    <div class="col-sm-12">
+  </div>
 
 </body>
 </html>

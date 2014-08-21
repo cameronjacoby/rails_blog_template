@@ -1,33 +1,58 @@
-<h1>New Post</h1>
+<div class="row">
 
-<form action="/posts" method="post">
-  <p>
-    <label for="title">Title</label>
-    <input type="text" name="post[title]" id="title" autofocus>
-  </p>
-  <p>
-    <label for="author">Author</label>
-    <input type="text" name="post[author]" id="author">
-  </p>
-  <p>
-    <label for="tagline">Tagline</label>
-    <input type="text" name="post[tagline]" id="tagline">
-  </p>
-  <p>
-    <label for="content">Content</label>
-    <textarea name="post[content]" id="content"></textarea>
-  </p>
-    <p>
-    <label for="image">Image URL</label>
-    <input type="text" name="post[image]" id="image">
-  </p>
-  </p>
-  <p>
-    <label for="tags">Tags</label>
-    <input type="text" name="post[tags]" id="tags">
-  </p>
+  <div class="col-sm-3">
+    <!-- <div id="all-tags">
+    </div> -->
+  </div>
 
-  <%= token_tag form_authenticity_token %>
+  <div class="col-sm-6">
 
-  <input type="submit" value="Save Post">
-</form>
+    <div id="new-post">
+      <h3>New Post</h3>
+
+      <form action="/posts" method="post" class="form-horizontal" role="form">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[title]" class="form-control" id="title" placeholder="Title"autofocus>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[author]" class="form-control" id="author" placeholder="Author">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[tagline]" class="form-control" id="tagline" placeholder="Tagline">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <textarea name="post[content]" class="form-control" id="content" placeholder="Content"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[image]" class="form-control" id="image" placeholder="Image URL">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[tags]" class="form-control" id="tags" placeholder="#tags">
+          </div>
+        </div>
+
+        <%= token_tag form_authenticity_token %>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="submit" class="btn btn-default" id="save-btn" value="Save Post">
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="col-sm-3"></div>
+</div>
