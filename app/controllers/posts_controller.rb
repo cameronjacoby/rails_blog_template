@@ -12,7 +12,22 @@ class PostsController < ApplicationController
 
   def create
     post = params.require(:post).permit(:title, :author, :content, :tagline, :image)
-    Post.create(post)
+
+    post_tags = params.require(:post).permit(:tags)
+    tags = post_tags[:tags]
+    tag_list = tags.split(',')
+    
+    new_post = Post.create(post)
+
+    tag_list.each do |tag|
+      if Tag.find_by_name(tag) == nil
+        post_tag = Tag.create(name: tag)
+      else
+        post_tag = Tag.find_by_name(tag)
+      end
+      new_post.tags.append(post_tag)
+    end
+
     redirect_to '/posts'
   end
 
