@@ -1,28 +1,32 @@
-<h1>View All Posts</h1>
-<p>
-  <a href="/">Home</a>
-  <a href="/posts/new">New Post</a>
-</p>
+<div class="row">
 
-<% @posts.each do |post| %>
-  <div>
-    <img src="<%= post[:image] %>">
-    <h2>Title: <a href="/posts/<%= post[:id] %>"><%= post[:title] %></a></h2>
-    <p>Author: <%= post[:author] %></p>
-    <p>Tagline: <%= post[:tagline] %></p>
-    <p>Content: <%= post[:content] %></p>
+  <div class="col-sm-3">
+    <h3>All Tags</h3>
     <p>
-      Tags:
-      <% post.tags.each do |tag| %>
+      <% @tags.each do |tag| %>
         <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
       <% end %>
     </p>
   </div>
-<% end %>
 
-<h3>All Tags</h3>
-<p>
-  <% @tags.each do |tag| %>
-    <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
-  <% end %>
-</p>
+  <div class="col-sm-6">
+    <% @posts.each do |post| %>
+      <div>
+        <img src="<%= post[:image] %>">
+        <h2>Title: <a href="/posts/<%= post[:id] %>"><%= post[:title] %></a></h2>
+        <p>Author: <%= post[:author] %></p>
+        <p>Tagline: <%= post[:tagline] %></p>
+        <p>Content: <%= post[:content] %></p>
+        <p>
+          Tags:
+          <% post.tags.each do |tag| %>
+            <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-sm-3"></div>
+
+</div>
