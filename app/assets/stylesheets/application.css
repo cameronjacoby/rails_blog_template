@@ -38,7 +38,7 @@ a:hover {
   color: #FABE1F;
 }
 
-#post, #new-post {
+#post, #new-post, #edit-post {
   border-top: 1px solid #808080;
   padding-top: 20px;
   padding-bottom: 40px;
@@ -71,12 +71,16 @@ form {
   margin-top: 40px;
 }
 
-#save-btn {
+#delete-form {
+  margin-top: -10px;
+}
+
+#save-btn, #delete-btn {
   margin-top: 20px;
   background-color: #FABE1F;
 }
 
-#save-btn:hover {
+#save-btn:hover, #delete-btn:hover {
   background-color: #E6E6E6;
 }
 

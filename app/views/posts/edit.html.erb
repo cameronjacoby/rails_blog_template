@@ -1,0 +1,69 @@
+<div class="row">
+
+  <div class="col-sm-3">
+    <div id="all-tags">
+      <% @tags.each do |tag| %>
+        <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+
+    <div id="edit-post">
+      <h3>Edit Post</h3>
+
+      <form action="/posts/<%=@post.id%>" method="post" class="form-horizontal" role="form">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[title]" value="<%=@post.title%>" class="form-control" id="title" placeholder="Title"autofocus>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[author]" value="<%=@post.author%>"class="form-control" id="author" placeholder="Author">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[tagline]" value="<%=@post.tagline%>"class="form-control" id="tagline" placeholder="Tagline">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <textarea name="post[content]" class="form-control" id="content" placeholder="Content"><%= @post.content %></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="post[image]" value="<%=@post.image%>" class="form-control" id="image" placeholder="Image URL">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="tags" value="<%=@post.tags.map(&:name).join(', ')%>" class="form-control" id="tags" placeholder="#tags">
+          </div>
+        </div>
+
+        <input type="hidden" name="_method" value="put">
+
+        <%= token_tag form_authenticity_token %>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="submit" class="btn btn-default" id="save-btn" value="Update Post">
+          </div>
+        </div>
+      </form>
+
+      <form action="/posts/<%=@post.id%>" method="post" id="delete-form">
+        <input type="hidden" name="_method" value="delete">
+        <%= token_tag form_authenticity_token %>
+        <input type="submit" class="btn btn-default" id="delete-btn" value="Delete Post">
+      </form>
+
+    </div>
+  </div>
+
+  <div class="col-sm-3"></div>
+</div>
