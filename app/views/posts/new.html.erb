@@ -3,7 +3,9 @@
   <div class="col-sm-3">
     <div id="all-tags">
       <% @tags.each do |tag| %>
-        <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+        <% if tag.posts.length > 0 %>
+          <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -41,7 +43,7 @@
         </div>
         <div class="form-group">
           <div class="col-sm-12">
-            <input type="text" name="tags" class="form-control" id="tags" placeholder="#tags">
+            <input type="text" name="tags" class="form-control" id="tags" placeholder="Tags (separate with commas)">
           </div>
         </div>
 
@@ -58,4 +60,5 @@
   </div>
 
   <div class="col-sm-3"></div>
+
 </div>

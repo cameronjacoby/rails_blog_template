@@ -3,7 +3,9 @@
   <div class="col-sm-3">
     <div id="all-tags">
       <% @tags.each do |tag| %>
-        <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+        <% if tag.posts.length > 0 %>
+          <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -13,22 +15,33 @@
       <div id="post">
         <h3><a href="/posts/<%= post[:id] %>"><%= post[:title] %></a></h3>
         <div id="tagline"><em><%= post[:tagline] %></em></div>
+
+        <% month = post[:created_at].month %>
+        <% day = post[:created_at].day %>
+        <% year =  post[:created_at].year %>
+
+        <div id="post-date"><%= month %>.<%= day %>.<%= year %></div>
         <img src="<%= post[:image] %>">
         <div id="content"><%= post[:content] %></div>
-        <div id="author-tags">
-          <p>Post by: <a href="#"><%= post[:author] %></a></p>
-          <p>
-            Tags:
-            <% post.tags.each do |tag| %>
-              <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+        
+        <div class="row">
+          <div class="col-xs-6" id="left-footer">
+            <p>Post by: <a href="#"><%= post[:author] %></a></p>
+            <p id="post-tags">
+              Tags:
+              <% post.tags.each do |tag| %>
+                <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+              <% end %>
+            </p>
+          </div>
+
+          <div class="col-xs-6" id="right-footer">
+            <% if post.comments.length > 0 %>
+              <p><a href="/posts/<%= post[:id] %>/comments">Comments (<%= post.comments.length %>)</a></p>
             <% end %>
-          </p>
+          </div>
         </div>
-        <div>
-          <% if post.comments.length > 0 %>
-            <p><a href="/posts/<%= post[:id] %>/comments">Comments (<%= post.comments.length %>)</a></p>
-          <% end %>
-        </div>
+
       </div>
     <% end %>
   </div>

@@ -3,61 +3,78 @@
   <div class="col-sm-3">
     <div id="all-tags">
       <% @tags.each do |tag| %>
-        <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+        <% if tag.posts.length > 0 %>
+          <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+        <% end %>
       <% end %>
     </div>
   </div>
 
   <div class="col-sm-6">
 
-  <div id="post">
-    <h3><a href="/posts/<%= @post[:id] %>"><%= @post[:title] %></a></h3>
-    <div id="tagline"><em><%= @post[:tagline] %></em></div>
-    <img src="<%= @post[:image] %>">
-    <div id="content"><%= @post[:content] %></div>
-    <div id="author-tags">
-      <p>Post by: <a href="#"><%= @post[:author] %></a></p>
-      <p>
-        Tags:
-        <% @post.tags.each do |tag| %>
-          <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
-        <% end %>
-      </p>
+    <div id="post">
+      <h3><a href="/posts/<%= @post[:id] %>"><%= @post[:title] %></a></h3>
+      <div id="tagline"><em><%= @post[:tagline] %></em></div>
+
+      <% month = @post[:created_at].month %>
+      <% day = @post[:created_at].day %>
+      <% year =  @post[:created_at].year %>
+
+      <div id="post-date"><%= month %>.<%= day %>.<%= year %></div>
+      <img src="<%= @post[:image] %>">
+      <div id="content"><%= @post[:content] %></div>
+      
+      <div class="row">
+        <div class="col-xs-6" id="left-footer">
+          <p>Post by: <a href="#"><%= @post[:author] %></a></p>
+          <p id="post-tags">
+            Tags:
+            <% @post.tags.each do |tag| %>
+              <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+            <% end %>
+          </p>
+        </div>
+
+        <div class="col-xs-6" id="right-footer"></div>
+      </div>
     </div>
 
     <div id="new-comment">
       <h3>New Comment</h3>
 
-      <%= form_for [@post, @comment] do |f| %>
+      <div class="form-horizontal" role="form">
+        <%= form_for [@post, @comment] do |f| %>
 
-        <div class="form-group">
-          <div class="col-sm-12">
-            <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <div class="col-sm-12">
-            <%= f.text_field :author, class: "form-control", placeholder: "Author" %>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :author, class: "form-control", placeholder: "Author" %>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <div class="col-sm-12">
-            <p><%= f.text_area :body, class: "form-control", placeholder: "Comment Text" %></p>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <p><%= f.text_area :body, class: "form-control", placeholder: "Comment Text" %></p>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <div class="col-sm-12">
-            <%= f.submit "Save Comment", class: "btn btn-default", id:"save-btn" %>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.submit "Save Comment", class: "btn btn-default", id:"save-btn" %>
+            </div>
           </div>
-        </div>
 
-      <% end %>
+        <% end %>
+      </div>
 
     </div>
   </div>
 
   <div class="col-sm-3"></div>
+
 </div>

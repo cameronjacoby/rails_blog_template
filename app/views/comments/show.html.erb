@@ -3,7 +3,9 @@
   <div class="col-sm-3">
     <div id="all-tags">
       <% @tags.each do |tag| %>
-        <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+        <% if tag.posts.length > 0 %>
+          <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -12,30 +14,49 @@
     <div id="post">
       <h3><a href="/posts/<%= @post[:id] %>"><%= @post[:title] %></a></h3>
       <div id="tagline"><em><%= @post[:tagline] %></em></div>
+
+      <% month = @post[:created_at].month %>
+      <% day = @post[:created_at].day %>
+      <% year =  @post[:created_at].year %>
+
+      <div id="post-date"><%= month %>.<%= day %>.<%= year %></div>
       <img src="<%= @post[:image] %>">
       <div id="content"><%= @post[:content] %></div>
-      <div id="author-tags">
-        <p>Post by: <a href="#"><%= @post[:author] %></a></p>
-        <p>
-          Tags:
-          <% @post.tags.each do |tag| %>
-            <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
-          <% end %>
-        </p>
-      </div>
 
-      <div>    
-        <h4><%= @comment[:title] %></h4>
-        <p>Comment by: <a href="#"><%= @comment[:author] %></a></p>
-        <p><%= @comment[:body] %></p> 
-      </div>
+      <div class="row">
+        <div class="col-xs-6" id="left-footer">
+          <p>Post by: <a href="#"><%= @post[:author] %></a></p>
+          <p id="post-tags">
+            Tags:
+            <% @post.tags.each do |tag| %>
+              <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+            <% end %>
+          </p>
+        </div>
 
-      <div>
-        <a href="/posts/<%= @post[:id] %>/comments/<%= @comment[:id] %>/edit">Edit Comment</a>
+        <div class="col-xs-6" id="right-footer"></div>
       </div>
+    </div>
 
+    <div id ="comments">
+      <h4><%= @comment[:title] %></h4>
+      <div id="comment-content">
+        <p><em><%= @comment[:body] %></em></p>
+
+        <div class="row">
+          <div class="col-xs-6">
+            <p><small>Comment by: <a href="#"><%= @comment[:author] %></a></small></p>
+          </div>
+          <div class="col-xs-6" id="edit-comment-link">
+            <p><small><a href="/posts/<%= @post[:id] %>/comments/<%= @comment[:id] %>/edit">Edit Comment</a></small></p>
+          </div>
+        </div>
+        
+      </div>
     </div>
 
   </div>
+
   <div class="col-sm-3"></div>
+
 </div>
