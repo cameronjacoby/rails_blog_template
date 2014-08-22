@@ -25,8 +25,8 @@
       </p>
     </div>
 
-    <div id="new-comment">
-      <h3>New Comment</h3>
+    <div id="edit-comment">
+      <h3>Edit Comment</h3>
 
       <%= form_for [@post, @comment] do |f| %>
 
@@ -50,11 +50,13 @@
 
         <div class="form-group">
           <div class="col-sm-12">
-            <%= f.submit "Save Comment", class: "btn btn-default", id:"save-btn" %>
+            <%= f.submit "Update Comment", class: "btn btn-default", id:"save-btn" %>
           </div>
         </div>
 
       <% end %>
+
+      <%= button_to "Delete Comment", [@post, @comment], method: :delete, class: "btn btn-default", id: "delete-btn" %>
 
     </div>
   </div>

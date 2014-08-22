@@ -31,6 +31,7 @@
           <p>Comment by: <a href="#"><%= comment[:author] %></a></p>
           <p><%= comment[:body] %></p>
         <% end %>
+        <p><a href="/posts/<%= @post[:id] %>/comments/new">New Comment</a></p>
       </div>
 
     </div>
