@@ -1,9 +1,8 @@
 class TagsController < ApplicationController
 
   def show
-    id = params[:id]
-    @tag = Tag.find(id)
+    tag_id = params[:id]
+    @tag = Tag.find(tag_id)
     @tags = Tag.all
-    render :show
   end
 end
