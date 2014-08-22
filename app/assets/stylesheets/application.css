@@ -38,7 +38,7 @@ a:hover {
   color: #FABE1F;
 }
 
-#post, #new-post, #edit-post {
+#post, #new-post, #edit-post, #new-comment {
   border-top: 1px solid #808080;
   padding-top: 20px;
   padding-bottom: 40px;

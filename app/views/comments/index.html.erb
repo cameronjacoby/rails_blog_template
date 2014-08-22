@@ -10,7 +10,7 @@
 
   <div class="col-sm-6">
     <div id="post">
-      <h3><%= @post[:title] %></h3>
+      <h3><a href="/posts/<%= @post[:id] %>"><%= @post[:title] %></a></h3>
       <div id="tagline"><em><%= @post[:tagline] %></em></div>
       <img src="<%= @post[:image] %>">
       <div id="content"><%= @post[:content] %></div>
@@ -25,17 +25,11 @@
       </div>
 
       <div>
-        <a href="/posts/<%= @post[:id] %>/edit">Edit Post</a>
-      </div>
-
-      <div>
-        <% if @post.comments.length > 0 %>
-          <h4><a href="/posts/<%= @post[:id] %>/comments">Comments about <%= @post[:title] %></a></h4>
-          <% @post.comments.each do |comment| %>
-            <h5><a href="/posts/<%= @post[:id] %>/comments/<%= comment[:id] %>"><%= comment[:title] %></a></h5>
-            <p>Comment by: <a href="#"><%= comment[:author] %></a></p>
-            <p><%= comment[:body] %></p>
-          <% end %>
+        <h4>Comments about <%= @post[:title] %></h4>
+        <% @comments.each do |comment| %>
+          <h5><a href="/posts/<%= @post[:id] %>/comments/<%= comment[:id] %>"><%= comment[:title] %></a></h5>
+          <p>Comment by: <a href="#"><%= comment[:author] %></a></p>
+          <p><%= comment[:body] %></p>
         <% end %>
       </div>
 

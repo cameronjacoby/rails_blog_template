@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'posts#index'
-  
+
   resources :posts do
-    resources :ads
+    resources :comments
   end
 
   # show page for all posts related to a tag

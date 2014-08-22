@@ -1,0 +1,48 @@
+<div class="row">
+
+  <div class="col-sm-3">
+    <div id="all-tags">
+      <% @tags.each do |tag| %>
+        <a href="/tags/<%= tag[:id] %>"><%= tag.name %></a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+
+    <div id="new-comment">
+      <h3>New Comment</h3>
+
+      <%= form_for [@post, @comment] do |f| %>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <%= f.text_field :author, class: "form-control", placeholder: "Author" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <p><%= f.text_area :body, class: "form-control", placeholder: "Comment Text" %></p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <%= f.submit "Save Comment", class: "btn btn-default", id:"save-btn" %>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="col-sm-3"></div>
+</div>
