@@ -15,48 +15,53 @@
     <div id="edit-post">
       <h3>Edit Post</h3>
 
-      <form action="/posts/<%=@post.id%>" method="post" class="form-horizontal" role="form">
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="post[title]" value="<%=@post.title%>" class="form-control" id="title" placeholder="Title"autofocus>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="post[author]" value="<%=@post.author%>"class="form-control" id="author" placeholder="Author">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="post[tagline]" value="<%=@post.tagline%>"class="form-control" id="tagline" placeholder="Tagline">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <textarea name="post[content]" class="form-control" id="content" placeholder="Content"><%= @post.content %></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="post[image]" value="<%=@post.image%>" class="form-control" id="image" placeholder="Image URL">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="tags" value="<%=@post.tags.map(&:name).join(', ')%>" class="form-control" id="tags" placeholder="Tags (separate with commas)">
-          </div>
-        </div>
+      <div class="form-horizontal" role="form">
+        <%= form_for @post do |f| %>
 
-        <input type="hidden" name="_method" value="put">
-
-        <%= token_tag form_authenticity_token %>
-
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="submit" class="btn btn-default" id="save-btn" value="Update Post">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+            </div>
           </div>
-        </div>
-      </form>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :author, class: "form-control", placeholder: "Author" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :tagline, class: "form-control", placeholder: "Tagline" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_area :content, class: "form-control", placeholder: "Content" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :image, class: "form-control", placeholder: "Image URL" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input type="text" name="post[tags]" value="<%=@post.tags.map(&:name).join(', ')%>" class="form-control" id="tags" placeholder="Tags (separate with commas)">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.submit "Save Post", class: "btn btn-default", id:"save-btn" %>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
 
       <%= button_to "Delete Post", @post, method: :delete, class: "btn btn-default", id: "delete-btn" %>
 

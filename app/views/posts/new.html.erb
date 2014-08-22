@@ -15,46 +15,53 @@
     <div id="new-post">
       <h3>New Post</h3>
 
-      <form action="/posts" method="post" class="form-horizontal" role="form">
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="post[title]" class="form-control" id="title" placeholder="Title"autofocus>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="post[author]" class="form-control" id="author" placeholder="Author">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="post[tagline]" class="form-control" id="tagline" placeholder="Tagline">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <textarea name="post[content]" class="form-control" id="content" placeholder="Content"></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="post[image]" class="form-control" id="image" placeholder="Image URL">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="text" name="tags" class="form-control" id="tags" placeholder="Tags (separate with commas)">
-          </div>
-        </div>
+      <div class="form-horizontal" role="form">
+        <%= form_for @post do |f| %>
 
-        <%= token_tag form_authenticity_token %>
-
-        <div class="form-group">
-          <div class="col-sm-12">
-            <input type="submit" class="btn btn-default" id="save-btn" value="Save Post">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+            </div>
           </div>
-        </div>
-      </form>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :author, class: "form-control", placeholder: "Author" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :tagline, class: "form-control", placeholder: "Tagline" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_area :content, class: "form-control", placeholder: "Content" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :image, class: "form-control", placeholder: "Image URL" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <%= f.text_field :tags, class: "form-control", placeholder: "Tags (separate with commas)", value: "" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+            <%= f.submit "Save Comment", class: "btn btn-default", id:"save-btn" %>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
 
     </div>
   </div>

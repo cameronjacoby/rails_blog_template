@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
     @tags = Tag.all
   end
 
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
         @post.tags << tag
       end
     end
-    redirect_to "/posts/" + post_id
+    redirect_to "/posts/#{@post_id}"
   end
 
   def destroy
@@ -57,7 +58,8 @@ class PostsController < ApplicationController
     end
 
     def tag_params
-      params.require(:tags).split(",").map(&:strip).map(&:downcase)
+      tag_params = params.require(:post).permit(:tags)
+      tag_params[:tags].split(",").map(&:strip).map(&:downcase)
     end
 
     def find_post
