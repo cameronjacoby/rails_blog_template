@@ -24,6 +24,11 @@
             <% end %>
           </p>
         </div>
+        <div>
+          <% if post.comments.length > 0 %>
+            <p>Comments (<%= post.comments.length %>)</p>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

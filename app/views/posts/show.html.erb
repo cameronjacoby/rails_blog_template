@@ -24,9 +24,21 @@
         </p>
       </div>
 
-      <div id="edit-link">
+      <div>
         <a href="/posts/<%= @post[:id] %>/edit">Edit Post</a>
       </div>
+
+      <div>
+        <% if @post.comments.length > 0 %>
+          <h4>Comments about <%= @post[:title] %></h4>
+          <% @post.comments.each do |comment| %>
+            <h5><%= comment[:title] %></h5>
+            <p>Comment by: <a href="#"><%= comment[:author] %></a></p>
+            <p><%= comment[:body] %></p>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
 
   </div>
