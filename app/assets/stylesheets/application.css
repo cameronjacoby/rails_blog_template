@@ -16,6 +16,8 @@ a:hover {
   color: #FABE1F;
 }
 
+/*site containers*/
+
 #header {
   height: 300px;
   margin-bottom: 50px;
@@ -38,6 +40,25 @@ a:hover {
   border-left: 1px solid #808080;
 }
 
+#footer {
+  width: 88%;
+  height: 100px;
+  border-top: 1px solid #808080;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+#all-tags {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  word-spacing: 5px;
+}
+
 #post, #comments, #new-post, #edit-post, #new-comment, #edit-comment {
   border-top: 1px solid #808080;
   padding-top: 20px;
@@ -45,6 +66,8 @@ a:hover {
   width: 90%;
   margin: 0 auto;
 }
+
+/*styles related to posts*/
 
 #post-date {
   margin-top: 5px;
@@ -58,15 +81,6 @@ img {
 
 #content {
   text-align: left;
-}
-
-#comment-content {
-  text-align: left;
-  margin-top: 20px;
-}
-
-#edit-comment-link {
-  text-align: right;
 }
 
 #left-footer {
@@ -86,6 +100,19 @@ img {
 #post-tags {
   word-spacing: 5px;
 }
+
+/*styles related to comments*/
+
+#comment-content {
+  text-align: left;
+  margin-top: 20px;
+}
+
+#edit-comment-link {
+  text-align: right;
+}
+
+/*styles related to forms*/
 
 form {
   width: 80%;
@@ -109,23 +136,4 @@ form {
 
 #delete-btn:hover {
   background-color: #FABE1F;
-}
-
-#all-tags {
-  width: 50%;
-  margin: 0 auto;
-  margin-bottom: 40px;
-  border-top: 1px solid #808080;
-  border-bottom: 1px solid #808080;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  word-spacing: 5px;
-}
-
-#footer {
-  width: 88%;
-  height: 100px;
-  border-top: 1px solid #808080;
-  margin: 0 auto;
-  margin-top: 50px;
 }

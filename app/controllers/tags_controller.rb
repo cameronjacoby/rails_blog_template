@@ -5,4 +5,5 @@ class TagsController < ApplicationController
     @tag = Tag.find(tag_id)
     @tags = Tag.all
   end
+
 end
